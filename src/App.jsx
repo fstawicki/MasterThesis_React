@@ -3,39 +3,53 @@ import './index.scss';
 
 function App() {
 
-  let elements = [
-    'First Element',
-    'Second Element',
-    'Third Element',
-    'Fourth Element',
-    'Fifth Element',
-  ]
+  const [array, setArray] = useState([]);
+  const [array2, setArray2] = useState([]);
+  let array1 = [];
+  
+  const renderElements = (number, e) => {
 
-  const [numbers, setNumbers] = useState([]);
-
-  const createElements = () => {
-    for(let i=0;i<=1000;i++){
-      let random = (1 + (Math.random() * (1000 - 1)));
-      setNumbers([...random])
+    for(let i=0; i<number; i++){
+      array1[i] = `Element nr: ${i+1}`;
     }
+    setArray(array1);
+
   }
+
+  const copyArray = () => {
+    setArray2(array);
+  }
+
+  const editElements = () => {
+    for(let i=0; i<array.length; i++){
+      setArray(oldArray => [array[i], 'and addition'])
+    }
+    setArray(array1);
+  }
+
+  // console.log(array);
+  console.log(array1);
 
   return (
     <div className="App">
       <div className="container">
-        <img src="./reacticon.png" alt="react icon" />
+        <div className="icon" />
         <h1 className='title'>React Testing App</h1>
-        <button className="btn" onClick={createElements}>Add Elements</button>
-        <button className="btn">Edit Elements</button>
-        <button className="btn">Delete One Element</button>
-        <button className="btn">Delete All Elements</button>
+        <div className="render_div">
+          <button className="btn" onClick={(e) => renderElements(1000, e)}>Render 1000</button>
+          <button className="btn" onClick={(e) => renderElements(10000, e)}>Render 10000</button>
+          <button className="btn" onClick={(e) => renderElements(25000, e)}>Render 25000</button>
+          <button className="btn" onClick={(e) => renderElements(50000, e)}>Render 50000</button>
+        </div>
+        <button className='btn' onClick={copyArray}>Copy Array</button>
+        <button className="btn" onClick={editElements}>Edit Elements</button>
+        <button className="btn">Delete Elements</button>
+        <div className="line"></div>
         <ul className='list'>{
-          elements.map((el) => <li className='element'>{el}</li>)
+          array.map((element) => (
+            <li key={element}>{element}</li>
+          ))
         }</ul>
-        <ul>{
-          numbers.map((num) => <li key={num}>{num}</li>)
-        }
-        </ul>
       </div>
     </div>
   );
