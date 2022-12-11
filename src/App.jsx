@@ -4,10 +4,11 @@ import './index.scss';
 function App() {
 
   const [array, setArray] = useState([]);
-  const [array2, setArray2] = useState([]);
+  const [copyingArray, setCopyingArray] = useState([]);
   // const [editArray, setEditArray] = useState([]);
   let array1 = [];
-  
+  let array2 = [];
+
   const renderElements = (number, e) => {
 
     for(let i=0; i<number; i++){
@@ -18,13 +19,14 @@ function App() {
   }
 
   const copyArray = () => {
-    setArray2(array);
+    setCopyingArray(array);
   }
 
   const editElements = () => {
-    // for(let i=0; i<array.length; i++){
-    //   setArray(`${array[i]} edited`);
-    // }
+    for(let i=0; i<array.length; i++){
+      array2[i] = `${array[i]} + edited`;
+    }
+    setArray(array2)
   }
 
   // console.log(array);
