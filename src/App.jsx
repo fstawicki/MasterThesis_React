@@ -5,6 +5,7 @@ function App() {
 
   const [array, setArray] = useState([]);
   const [array2, setArray2] = useState([]);
+  // const [editArray, setEditArray] = useState([]);
   let array1 = [];
   
   const renderElements = (number, e) => {
@@ -21,14 +22,13 @@ function App() {
   }
 
   const editElements = () => {
-    for(let i=0; i<array.length; i++){
-      setArray(oldArray => [array[i], 'and addition'])
-    }
-    setArray(array1);
+    // for(let i=0; i<array.length; i++){
+    //   setArray(`${array[i]} edited`);
+    // }
   }
 
   // console.log(array);
-  console.log(array1);
+  // console.log(array1);
 
   return (
     <div className="App">
