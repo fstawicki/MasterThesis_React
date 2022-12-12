@@ -5,7 +5,7 @@ function App() {
 
   const [array, setArray] = useState([]);
   const [copyingArray, setCopyingArray] = useState([]);
-  // const [editArray, setEditArray] = useState([]);
+  
   let array1 = [];
   let array2 = [];
 
@@ -29,8 +29,11 @@ function App() {
     setArray(array2)
   }
 
-  // console.log(array);
-  // console.log(array1);
+  const deleteElements = () => {
+    setArray([]);
+  }
+
+  console.log(copyingArray);
 
   return (
     <div className="App">
@@ -45,8 +48,8 @@ function App() {
         </div>
         <button className='btn' onClick={copyArray}>Copy Array</button>
         <button className="btn" onClick={editElements}>Edit Elements</button>
-        <button className="btn">Delete Elements</button>
-        <div className="line"></div>
+        <button className="btn" onClick={deleteElements}>Delete Elements</button>
+        <div className="line" />
         <ul className='list'>{
           array.map((element) => (
             <li key={element}>{element}</li>
